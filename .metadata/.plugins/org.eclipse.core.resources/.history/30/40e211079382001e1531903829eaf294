@@ -1,0 +1,50 @@
+/*
+ * task_button.c
+ *
+ *  Created on: Nov 12, 2023
+ *      Author: thony
+ */
+
+#include <stdio.h>
+#include <stdint.h>
+#include <stdbool.h>
+
+#include "driver.h"
+#include "task_button.h"
+
+
+
+
+
+TickType_t pressed_start=0;
+TickType_t pressed_time;
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	if(eboard_gpio_read(EBOARD_GPIO_SW)== false)
+	{
+		pressed_start= xTaskGetTickCount();
+
+	}
+	else
+	{
+		pressed_time= xTaskGetTickCount()-pressed_start;
+		pressed_start=0;
+
+	}
+
+	ELOG("ticks: %lu \r\n",pressed_time);
+
+}
+
+
+
+void task_button(void* argument)
+{
+	ELOG("HOLA");
+
+
+}
+
+
+

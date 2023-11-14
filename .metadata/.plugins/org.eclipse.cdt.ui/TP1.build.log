@@ -1,0 +1,17 @@
+17:24:07 **** Incremental Build of configuration Debug for project TP1 ****
+make -j12 all 
+arm-none-eabi-gcc "../App/Src/app.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../App/Inc -I../Supporting_Functions/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"App/Src/app.d" -MT"App/Src/app.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "App/Src/app.o"
+arm-none-eabi-gcc -o "TP1.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\thony\Documents\Maestria\RTOS II\Practica\TP1\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TP1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: TP1.elf
+ 
+arm-none-eabi-size   TP1.elf 
+arm-none-eabi-objdump -h -S  TP1.elf  > "TP1.list"
+   text	   data	    bss	    dec	    hex	filename
+  22504	    128	  18528	  41160	   a0c8	TP1.elf
+Finished building: default.size.stdout
+ 
+Finished building: TP1.list
+ 
+
+17:24:08 Build Finished. 0 errors, 0 warnings. (took 1s.31ms)
+

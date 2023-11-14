@@ -1,0 +1,10 @@
+14:21:36 **** Incremental Build of configuration Debug for project TP1_SistemaReactivo ****
+make -j12 all 
+arm-none-eabi-size   TP1_SistemaReactivo.elf 
+   text	   data	    bss	    dec	    hex	filename
+  24260	    188	  19892	  44340	   ad34	TP1_SistemaReactivo.elf
+Finished building: default.size.stdout
+ 
+
+14:21:36 Build Finished. 0 errors, 0 warnings. (took 301ms)
+

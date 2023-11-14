@@ -1,0 +1,10 @@
+22:36:08 **** Incremental Build of configuration Debug for project gpio_uart_it ****
+make -j12 all 
+arm-none-eabi-size   gpio_uart_it.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16060	    100	   1972	  18132	   46d4	gpio_uart_it.elf
+Finished building: default.size.stdout
+ 
+
+22:36:08 Build Finished. 0 errors, 0 warnings. (took 270ms)
+

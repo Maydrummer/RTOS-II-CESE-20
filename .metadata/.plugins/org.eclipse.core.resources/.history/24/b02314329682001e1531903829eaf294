@@ -1,0 +1,22 @@
+/*
+ * task_led.c
+ *
+ *  Created on: Nov 13, 2023
+ *      Author: thony
+ */
+#include <stdio.h>
+#include <stdint.h>
+#include <stdbool.h>
+
+#include "driver.h"
+#include "task_led.h"
+
+
+void task_led(void* argument)
+{
+	while(1)
+	{
+		printf("HOla2 \r\n");
+		vTaskDelay(1000);
+	}
+}

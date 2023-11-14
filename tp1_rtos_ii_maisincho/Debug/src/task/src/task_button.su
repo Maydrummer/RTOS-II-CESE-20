@@ -1,0 +1,3 @@
+../src/task/src/task_button.c:32:6:HAL_GPIO_EXTI_Callback	16	static
+../src/task/src/task_button.c:50:6:task_button	16	static
+../src/task/src/task_button.c:72:6:procces_button	16	static

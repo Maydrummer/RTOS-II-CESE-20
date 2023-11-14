@@ -1,0 +1,53 @@
+/*
+ * task_button.c
+ *
+ *  Created on: Nov 12, 2023
+ *      Author: thony
+ */
+
+#include <stdio.h>
+#include <stdint.h>
+#include <stdbool.h>
+
+#include "driver.h"
+#include "task_button.h"
+
+
+
+typedef enum
+{
+	pressed,
+	released,
+
+}button_state_t;
+
+volatile button_state_t b_state= released;
+
+TickType_t pressed_tick=0;
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	if(eboard_gpio_read(EBOARD_GPIO_SW)== false)
+	{
+		b_state= pressed;
+
+	}
+	else
+	{
+		b_state=released;
+	}
+
+
+
+}
+
+
+
+void task_button(void* argument)
+{
+
+
+}
+
+
+

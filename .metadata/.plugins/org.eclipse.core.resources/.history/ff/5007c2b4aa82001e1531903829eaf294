@@ -1,0 +1,60 @@
+/*
+ * task_led.c
+ *
+ *  Created on: Nov 13, 2023
+ *      Author: thony
+ */
+#include <stdio.h>
+#include <stdint.h>
+#include <stdbool.h>
+
+#include "driver.h"
+#include "task_led.h"
+#include "task_button.h"
+
+led_event_t ao_evento;
+BaseType_t rv;
+const TickType_t xDelay10000ms = pdMS_TO_TICKS(10000UL); //xTicksToWait de la cola
+uint8_t buffer2[100];
+void proccess_ao_evento(led_event_t *evento_t);
+
+void task_led(void* argument)
+{
+	while(1)
+	{
+		ELOG("--------- TASK LED------- \r\n");
+		rv = xQueueReceive(QueueBtnStatus, &ao_evento, xDelay10000ms);
+		//Revisar que el mensaje se halla encolado correctamente.
+		configASSERT(&rv != NULL);
+		sprintf((char *)buffer2,"Proccess button led: %u \r\n",ao_evento);
+		ELOG(buffer2);
+		procces_button(&ao_evento);
+		vTaskDelay(1000);
+	}
+}
+
+void proccess_ao_evento(led_event_t *evento_t)
+{
+	switch (*evento_t) {
+		case inicial:
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5,GPIO_PIN_RESET );
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6,GPIO_PIN_RESET );
+
+			break;
+		case corto:
+			HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
+
+			break;
+		case largo:
+			HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_6);
+			break;
+		case trabado:
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5,GPIO_PIN_SET );
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6,GPIO_PIN_SET );
+			break;
+		default:
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5,GPIO_PIN_RESET );
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6,GPIO_PIN_RESET );
+			break;
+	}
+}
