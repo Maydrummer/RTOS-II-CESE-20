@@ -1,7 +1,7 @@
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
-configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:sistemas_reactivos_ejemplo_01,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:sistemas_reactivos_ejemplo_02,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:tp1_rtos_ii_maisincho Debug
+configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:memoria_dinamica_ejemplo_1,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:tp1_rtos_ii_maisincho Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:tp2_rtos_ii_maisincho Debug
 eclipse.preferences.version=1
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:TP1/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:TP1_SistemaReactivo\ Debug/activeLaunchMode=debug
@@ -19,3 +19,4 @@ org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:sistemas_reactivos_ejemplo_01/a
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:sistemas_reactivos_ejemplo_01/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:sistemas_reactivos_ejemplo_02/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:tp1_rtos_ii_maisincho\ Debug/activeLaunchMode=run
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:tp2_rtos_ii_maisincho\ Debug/activeLaunchMode=run
