@@ -5,12 +5,15 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../src/app/src/ao_led.c \
 ../src/app/src/app.c 
 
 OBJS += \
+./src/app/src/ao_led.o \
 ./src/app/src/app.o 
 
 C_DEPS += \
+./src/app/src/ao_led.d \
 ./src/app/src/app.d 
 
 
@@ -21,7 +24,7 @@ src/app/src/%.o src/app/src/%.su src/app/src/%.cyclo: ../src/app/src/%.c src/app
 clean: clean-src-2f-app-2f-src
 
 clean-src-2f-app-2f-src:
-	-$(RM) ./src/app/src/app.cyclo ./src/app/src/app.d ./src/app/src/app.o ./src/app/src/app.su
+	-$(RM) ./src/app/src/ao_led.cyclo ./src/app/src/ao_led.d ./src/app/src/ao_led.o ./src/app/src/ao_led.su ./src/app/src/app.cyclo ./src/app/src/app.d ./src/app/src/app.o ./src/app/src/app.su
 
 .PHONY: clean-src-2f-app-2f-src
 

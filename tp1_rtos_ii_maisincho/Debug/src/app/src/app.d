@@ -47,8 +47,7 @@ src/app/src/app.o: ../src/app/src/app.c \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
  C:/Users/thony/Documents/Maestria/RTOS\ II/Practica/tp1_rtos_ii_maisincho/src/lib/inc/eboard.h \
- C:/Users/thony/Documents/Maestria/RTOS\ II/Practica/tp1_rtos_ii_maisincho/src/task/inc/task_button.h \
- C:/Users/thony/Documents/Maestria/RTOS\ II/Practica/tp1_rtos_ii_maisincho/src/task/inc/task_led.h
+ C:/Users/thony/Documents/Maestria/RTOS\ II/Practica/tp1_rtos_ii_maisincho/src/task/inc/task_button.h
 C:/Users/thony/Documents/Maestria/RTOS\ II/Practica/tp1_rtos_ii_maisincho/src/app/inc/driver.h:
 C:/Users/thony/Documents/Maestria/RTOS\ II/Practica/tp1_rtos_ii_maisincho/src/hal/inc/hal.h:
 ../Core/Inc/main.h:
@@ -99,4 +98,3 @@ C:/Users/thony/Documents/Maestria/RTOS\ II/Practica/tp1_rtos_ii_maisincho/src/ha
 ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
 C:/Users/thony/Documents/Maestria/RTOS\ II/Practica/tp1_rtos_ii_maisincho/src/lib/inc/eboard.h:
 C:/Users/thony/Documents/Maestria/RTOS\ II/Practica/tp1_rtos_ii_maisincho/src/task/inc/task_button.h:
-C:/Users/thony/Documents/Maestria/RTOS\ II/Practica/tp1_rtos_ii_maisincho/src/task/inc/task_led.h:

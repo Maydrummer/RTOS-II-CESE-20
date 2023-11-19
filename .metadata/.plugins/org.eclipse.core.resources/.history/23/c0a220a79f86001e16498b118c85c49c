@@ -1,0 +1,88 @@
+/*
+ * task_button.c
+ *
+ *  Created on: Nov 12, 2023
+ *      Author: thony
+ */
+
+#include <stdio.h>
+#include <stdint.h>
+#include <stdbool.h>
+
+#include "driver.h"
+#include "task_button.h"
+
+
+//--------variables locales--------
+TickType_t pressed_start=0;
+TickType_t pressed_time;
+uint8_t buffer[100];
+
+
+led_event_t l_evento;
+//---------prototipo de funciones-----
+
+void procces_button(led_event_t *evento);
+
+
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	if(eboard_gpio_read(EBOARD_GPIO_SW)== false)
+	{
+		pressed_start= xTaskGetTickCount();
+
+
+	}
+	else
+	{
+		pressed_time= xTaskGetTickCount()-pressed_start;
+		pressed_start=0;
+
+	}
+}
+
+
+
+void task_button(void* argument)
+{
+	l_evento = inicial;
+	while(1)
+	{
+		ELOG("--------- TASK BUTTON------- \r\n");
+		//Productora de eventos
+		sprintf((char *)buffer,"Tiempo presionado: %lu\r\n" ,pressed_time);
+		ELOG(buffer);
+		procces_button(&l_evento);
+		sprintf((char *)buffer,"Proccess button: %u \r\n",l_evento);
+		ELOG(buffer);
+		vTaskDelay(100);
+
+	}
+
+
+}
+
+
+void procces_button(led_event_t *evento)
+{
+	if ( (t_corto <= pressed_time) && (pressed_time < t_largo))
+	{
+		*evento= corto;
+
+	}
+	else if((t_largo <= pressed_time) && (pressed_time < t_trabado))
+	{
+		*evento= largo;
+	}
+	else if(pressed_time > t_trabado)
+	{
+		*evento= trabado;
+	}
+	else
+	{
+		*evento= inicial;
+	}
+}
+
+

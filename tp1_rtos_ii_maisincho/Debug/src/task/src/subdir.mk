@@ -5,16 +5,13 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../src/task/src/task_button.c \
-../src/task/src/task_led.c 
+../src/task/src/task_button.c 
 
 OBJS += \
-./src/task/src/task_button.o \
-./src/task/src/task_led.o 
+./src/task/src/task_button.o 
 
 C_DEPS += \
-./src/task/src/task_button.d \
-./src/task/src/task_led.d 
+./src/task/src/task_button.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -24,7 +21,7 @@ src/task/src/%.o src/task/src/%.su src/task/src/%.cyclo: ../src/task/src/%.c src
 clean: clean-src-2f-task-2f-src
 
 clean-src-2f-task-2f-src:
-	-$(RM) ./src/task/src/task_button.cyclo ./src/task/src/task_button.d ./src/task/src/task_button.o ./src/task/src/task_button.su ./src/task/src/task_led.cyclo ./src/task/src/task_led.d ./src/task/src/task_led.o ./src/task/src/task_led.su
+	-$(RM) ./src/task/src/task_button.cyclo ./src/task/src/task_button.d ./src/task/src/task_button.o ./src/task/src/task_button.su
 
 .PHONY: clean-src-2f-task-2f-src
 

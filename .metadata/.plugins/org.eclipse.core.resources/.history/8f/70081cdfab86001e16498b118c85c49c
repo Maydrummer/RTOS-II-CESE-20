@@ -1,0 +1,27 @@
+/*
+ * task_button.h
+ *
+ *  Created on: Nov 12, 2023
+ *      Author: thony
+ */
+
+#ifndef TASK_INC_TASK_BUTTON_H_
+#define TASK_INC_TASK_BUTTON_H_
+
+#include "hal.h"
+
+typedef enum
+{
+	inicial,
+	corto,
+	largo,
+	trabado,
+}led_event_t;
+
+
+void task_button(void* argument);
+void procces_button(led_event_t *ao_evento);
+
+
+
+#endif /* TASK_INC_TASK_BUTTON_H_ */

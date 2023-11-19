@@ -1,0 +1,41 @@
+/*
+ * ao_led.h
+ *
+ *  Created on: Nov 19, 2023
+ *      Author: thony
+ */
+
+#ifndef APP_INC_AO_LED_H_
+#define APP_INC_AO_LED_H_
+
+#include <stdio.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include "task_button.h"  //el mensaje que se envia es de led_event_t
+
+typedef struct ao_led_s ao_led_t;
+typedef void (*ao_led_callbak_t)(ao_led_t *hao, led_event_t state);
+
+
+struct ao_led_s
+{
+	QueueHandle_t hqueue;
+    ao_led_callbak_t callback;
+};
+
+
+
+
+
+
+
+
+bool ao_led_send(ao_led_t* hao, led_event_t ao_event);
+
+void ao_led_init(ao_led_t* hao, ao_led_callbak_t callback);
+
+void proccess_ao_evento(led_event_t *evento_t);
+
+
+
+#endif /* APP_INC_AO_LED_H_ */

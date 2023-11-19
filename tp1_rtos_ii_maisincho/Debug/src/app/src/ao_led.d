@@ -1,5 +1,6 @@
 src/app/src/ao_led.o: ../src/app/src/ao_led.c \
- C:/Users/thony/Documents/Maestria/RTOS\ II/Practica/tp1_rtos_ii_maisincho/src/app/inc/driver.h \
+ C:/Users/thony/Documents/Maestria/RTOS\ II/Practica/tp1_rtos_ii_maisincho/src/app/inc/ao_led.h \
+ C:/Users/thony/Documents/Maestria/RTOS\ II/Practica/tp1_rtos_ii_maisincho/src/task/inc/task_button.h \
  C:/Users/thony/Documents/Maestria/RTOS\ II/Practica/tp1_rtos_ii_maisincho/src/hal/inc/hal.h \
  ../Core/Inc/main.h ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
@@ -46,9 +47,10 @@ src/app/src/ao_led.o: ../src/app/src/ao_led.c \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
- C:/Users/thony/Documents/Maestria/RTOS\ II/Practica/tp1_rtos_ii_maisincho/src/lib/inc/eboard.h \
- C:/Users/thony/Documents/Maestria/RTOS\ II/Practica/tp1_rtos_ii_maisincho/src/app/inc/ao_led.h
-C:/Users/thony/Documents/Maestria/RTOS\ II/Practica/tp1_rtos_ii_maisincho/src/app/inc/driver.h:
+ C:/Users/thony/Documents/Maestria/RTOS\ II/Practica/tp1_rtos_ii_maisincho/src/app/inc/driver.h \
+ C:/Users/thony/Documents/Maestria/RTOS\ II/Practica/tp1_rtos_ii_maisincho/src/lib/inc/eboard.h
+C:/Users/thony/Documents/Maestria/RTOS\ II/Practica/tp1_rtos_ii_maisincho/src/app/inc/ao_led.h:
+C:/Users/thony/Documents/Maestria/RTOS\ II/Practica/tp1_rtos_ii_maisincho/src/task/inc/task_button.h:
 C:/Users/thony/Documents/Maestria/RTOS\ II/Practica/tp1_rtos_ii_maisincho/src/hal/inc/hal.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
@@ -96,5 +98,5 @@ C:/Users/thony/Documents/Maestria/RTOS\ II/Practica/tp1_rtos_ii_maisincho/src/ha
 ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
+C:/Users/thony/Documents/Maestria/RTOS\ II/Practica/tp1_rtos_ii_maisincho/src/app/inc/driver.h:
 C:/Users/thony/Documents/Maestria/RTOS\ II/Practica/tp1_rtos_ii_maisincho/src/lib/inc/eboard.h:
-C:/Users/thony/Documents/Maestria/RTOS\ II/Practica/tp1_rtos_ii_maisincho/src/app/inc/ao_led.h:

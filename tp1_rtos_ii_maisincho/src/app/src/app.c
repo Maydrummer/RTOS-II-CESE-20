@@ -44,7 +44,7 @@
 
 #include "driver.h"
 #include "task_button.h"
-#include "task_led.h"
+
 
 /********************** macros and definitions *******************************/
 
@@ -54,11 +54,8 @@
 
 /********************** internal data definition *****************************/
 
-
-
 /********************** external data definition *****************************/
-extern QueueHandle_t QueueBtnStatus;
-extern led_event_t l_evento;
+
 /********************** external functions definition ************************/
 
 
@@ -68,10 +65,8 @@ void app_init(void)
   // drivers
   {
     eboard_init();
+    ELOG("drivers init");
   }
-
-  QueueBtnStatus = xQueueCreate(10,sizeof(l_evento));
-  configASSERT( QueueBtnStatus != NULL );
 
 
   // tasks
@@ -82,13 +77,10 @@ void app_init(void)
     {
       // error
     }
-    status = xTaskCreate(task_led, "task_led", (2 * configMINIMAL_STACK_SIZE), NULL,(tskIDLE_PRIORITY + 2UL), NULL);
-    while (pdPASS != status)
-    {
-    	// error
-	}
+    ELOG("tasks init");
 
   }
+  ELOG("app init");
 }
 
 /********************** end of file ******************************************/

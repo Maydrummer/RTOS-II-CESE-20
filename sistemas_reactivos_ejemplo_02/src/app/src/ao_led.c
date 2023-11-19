@@ -65,14 +65,15 @@ typedef struct
 
 /********************** internal functions definition ************************/
 
-static void task_(void* argument)
+static void task_(void* argument)  //el argumento de la funcion es la estructura del objeto activo
 {
-  ao_led_t* hao = (ao_led_t*)argument;
+  ao_led_t* hao = (ao_led_t*)argument; //aca lo desempaqueta en hao
   while(true)
   {
     event_t_ event;
-    if(pdPASS == xQueueReceive(hao->hqueue, &event, portMAX_DELAY))
+    if(pdPASS == xQueueReceive(hao->hqueue, &event, portMAX_DELAY)) //No queda bloqueado esperando un evento
     {
+    	// procesar evento con maquina de estado
       ELOG("ao, led:%d", event.state);
       eboard_led_red(event.state);
       hao->callback(hao, event.state);
