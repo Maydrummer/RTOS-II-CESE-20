@@ -1825,3 +1825,777 @@ arm-none-eabi-size   tp2_rtos_ii_maisincho.elf
   27984	    188	  20004	  48176	   bc30	tp2_rtos_ii_maisincho.elf
 Finished building: default.size.stdout
  
+18:59:08 **** Incremental Build of configuration Debug for project memoria_dinamica_ejemplo_1 ****
+make -j12 all 
+arm-none-eabi-size   memoria_dinamica_ejemplo_1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  29372	    188	  20916	  50476	   c52c	memoria_dinamica_ejemplo_1.elf
+Finished building: default.size.stdout
+ 
+18:59:08 **** Incremental Build of configuration Debug for project tp2_rtos_ii_maisincho ****
+make -j12 all 
+arm-none-eabi-gcc "../src/task/src/task_button.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/hal/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/task/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"src/task/src/task_button.d" -MT"src/task/src/task_button.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "src/task/src/task_button.o"
+arm-none-eabi-gcc "../src/app/src/ao_led.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/hal/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/task/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"src/app/src/ao_led.d" -MT"src/app/src/ao_led.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "src/app/src/ao_led.o"
+../src/task/src/task_button.c: In function 'led_state_callback_':
+../src/task/src/task_button.c:27:3: error: 'ao_evento' undeclared (first use in this function); did you mean 'osEvent'?
+   27 |   ao_evento = state;
+      |   ^~~~~~~~~
+      |   osEvent
+../src/task/src/task_button.c:27:3: note: each undeclared identifier is reported only once for each function it appears in
+In file included from C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc/driver.h:55,
+                 from ../src/task/src/task_button.c:12:
+../src/task/src/task_button.c: In function 'task_button':
+../src/task/src/task_button.c:57:22: warning: pointer targets in passing argument 3 of 'snprintf' differ in signedness [-Wpointer-sign]
+   57 |                 ELOG(buffer);
+      |                      ^~~~~~
+      |                      |
+      |                      uint8_t * {aka unsigned char *}
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc/eboard.h:61:60: note: in definition of macro 'ELOG'
+   61 |       elog_msg_len = snprintf(elog_msg, (ELOG_MAXLEN - 1), __VA_ARGS__);\
+      |                                                            ^~~~~~~~~~~
+In file included from ../src/task/src/task_button.c:8:
+C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.0.202305231506\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/stdio.h:276:45: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  276 | int     snprintf (char *__restrict, size_t, const char *__restrict, ...)
+      |                                             ^
+../src/task/src/task_button.c:58:64: error: 'led_event_t_' undeclared (first use in this function); did you mean 'led_event_t'?
+   58 |                 led_event_t *p_ao_evento = pvPortMalloc(sizeof(led_event_t_)); //puntero que guardara la direccion de la memoria dinamica asignada
+      |                                                                ^~~~~~~~~~~~
+      |                                                                led_event_t
+../src/task/src/task_button.c:62:40: warning: passing argument 1 of 'procces_button' from incompatible pointer type [-Wincompatible-pointer-types]
+   62 |                         procces_button(&p_ao_evento); //evento a enviar, se lo procesa en funcion del tiempo presionado
+      |                                        ^~~~~~~~~~~~
+      |                                        |
+      |                                        led_event_t **
+In file included from ../src/task/src/task_button.c:13:
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/task/inc/task_button.h:29:34: note: expected 'led_event_t *' but argument is of type 'led_event_t **'
+   29 | void procces_button(led_event_t *ao_evento);
+      |                     ~~~~~~~~~~~~~^~~~~~~~~
+../src/task/src/task_button.c:77:75: error: 'ao_evento' undeclared (first use in this function); did you mean 'p_ao_evento'?
+   77 |                         sprintf((char *)buffer,"Proccess button: %u \r\n",ao_evento);
+      |                                                                           ^~~~~~~~~
+      |                                                                           p_ao_evento
+In file included from C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc/driver.h:55,
+                 from ../src/task/src/task_button.c:12:
+../src/task/src/task_button.c:78:30: warning: pointer targets in passing argument 3 of 'snprintf' differ in signedness [-Wpointer-sign]
+   78 |                         ELOG(buffer);
+      |                              ^~~~~~
+      |                              |
+      |                              uint8_t * {aka unsigned char *}
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc/eboard.h:61:60: note: in definition of macro 'ELOG'
+   61 |       elog_msg_len = snprintf(elog_msg, (ELOG_MAXLEN - 1), __VA_ARGS__);\
+      |                                                            ^~~~~~~~~~~
+In file included from ../src/task/src/task_button.c:8:
+C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.0.202305231506\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/stdio.h:276:45: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  276 | int     snprintf (char *__restrict, size_t, const char *__restrict, ...)
+      |                                             ^
+make: *** [src/task/src/subdir.mk:19: src/task/src/task_button.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+19:00:25 **** Incremental Build of configuration Debug for project memoria_dinamica_ejemplo_1 ****
+make -j12 all 
+arm-none-eabi-size   memoria_dinamica_ejemplo_1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  29372	    188	  20916	  50476	   c52c	memoria_dinamica_ejemplo_1.elf
+Finished building: default.size.stdout
+ 
+19:00:26 **** Incremental Build of configuration Debug for project tp2_rtos_ii_maisincho ****
+make -j12 all 
+arm-none-eabi-gcc "../src/task/src/task_button.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/hal/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/task/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"src/task/src/task_button.d" -MT"src/task/src/task_button.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "src/task/src/task_button.o"
+../src/task/src/task_button.c: In function 'led_state_callback_':
+../src/task/src/task_button.c:27:3: error: 'ao_evento' undeclared (first use in this function); did you mean 'osEvent'?
+   27 |   ao_evento = state;
+      |   ^~~~~~~~~
+      |   osEvent
+../src/task/src/task_button.c:27:3: note: each undeclared identifier is reported only once for each function it appears in
+In file included from C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc/driver.h:55,
+                 from ../src/task/src/task_button.c:12:
+../src/task/src/task_button.c: In function 'task_button':
+../src/task/src/task_button.c:57:22: warning: pointer targets in passing argument 3 of 'snprintf' differ in signedness [-Wpointer-sign]
+   57 |                 ELOG(buffer);
+      |                      ^~~~~~
+      |                      |
+      |                      uint8_t * {aka unsigned char *}
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc/eboard.h:61:60: note: in definition of macro 'ELOG'
+   61 |       elog_msg_len = snprintf(elog_msg, (ELOG_MAXLEN - 1), __VA_ARGS__);\
+      |                                                            ^~~~~~~~~~~
+In file included from ../src/task/src/task_button.c:8:
+C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.0.202305231506\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/stdio.h:276:45: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  276 | int     snprintf (char *__restrict, size_t, const char *__restrict, ...)
+      |                                             ^
+../src/task/src/task_button.c:62:40: warning: passing argument 1 of 'procces_button' from incompatible pointer type [-Wincompatible-pointer-types]
+   62 |                         procces_button(&p_ao_evento); //evento a enviar, se lo procesa en funcion del tiempo presionado
+      |                                        ^~~~~~~~~~~~
+      |                                        |
+      |                                        led_event_t **
+In file included from ../src/task/src/task_button.c:13:
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/task/inc/task_button.h:29:34: note: expected 'led_event_t *' but argument is of type 'led_event_t **'
+   29 | void procces_button(led_event_t *ao_evento);
+      |                     ~~~~~~~~~~~~~^~~~~~~~~
+../src/task/src/task_button.c:77:75: error: 'ao_evento' undeclared (first use in this function); did you mean 'p_ao_evento'?
+   77 |                         sprintf((char *)buffer,"Proccess button: %u \r\n",ao_evento);
+      |                                                                           ^~~~~~~~~
+      |                                                                           p_ao_evento
+In file included from C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc/driver.h:55,
+                 from ../src/task/src/task_button.c:12:
+../src/task/src/task_button.c:78:30: warning: pointer targets in passing argument 3 of 'snprintf' differ in signedness [-Wpointer-sign]
+   78 |                         ELOG(buffer);
+      |                              ^~~~~~
+      |                              |
+      |                              uint8_t * {aka unsigned char *}
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc/eboard.h:61:60: note: in definition of macro 'ELOG'
+   61 |       elog_msg_len = snprintf(elog_msg, (ELOG_MAXLEN - 1), __VA_ARGS__);\
+      |                                                            ^~~~~~~~~~~
+In file included from ../src/task/src/task_button.c:8:
+C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.0.202305231506\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/stdio.h:276:45: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  276 | int     snprintf (char *__restrict, size_t, const char *__restrict, ...)
+      |                                             ^
+make: *** [src/task/src/subdir.mk:19: src/task/src/task_button.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+19:01:34 **** Incremental Build of configuration Debug for project memoria_dinamica_ejemplo_1 ****
+make -j12 all 
+arm-none-eabi-size   memoria_dinamica_ejemplo_1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  29372	    188	  20916	  50476	   c52c	memoria_dinamica_ejemplo_1.elf
+Finished building: default.size.stdout
+ 
+19:01:34 **** Incremental Build of configuration Debug for project tp2_rtos_ii_maisincho ****
+make -j12 all 
+arm-none-eabi-gcc "../src/task/src/task_button.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/hal/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/task/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"src/task/src/task_button.d" -MT"src/task/src/task_button.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "src/task/src/task_button.o"
+In file included from C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc/driver.h:55,
+                 from ../src/task/src/task_button.c:12:
+../src/task/src/task_button.c: In function 'task_button':
+../src/task/src/task_button.c:57:22: warning: pointer targets in passing argument 3 of 'snprintf' differ in signedness [-Wpointer-sign]
+   57 |                 ELOG(buffer);
+      |                      ^~~~~~
+      |                      |
+      |                      uint8_t * {aka unsigned char *}
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc/eboard.h:61:60: note: in definition of macro 'ELOG'
+   61 |       elog_msg_len = snprintf(elog_msg, (ELOG_MAXLEN - 1), __VA_ARGS__);\
+      |                                                            ^~~~~~~~~~~
+In file included from ../src/task/src/task_button.c:8:
+C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.0.202305231506\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/stdio.h:276:45: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  276 | int     snprintf (char *__restrict, size_t, const char *__restrict, ...)
+      |                                             ^
+../src/task/src/task_button.c:62:40: warning: passing argument 1 of 'procces_button' from incompatible pointer type [-Wincompatible-pointer-types]
+   62 |                         procces_button(&p_ao_evento); //evento a enviar, se lo procesa en funcion del tiempo presionado
+      |                                        ^~~~~~~~~~~~
+      |                                        |
+      |                                        led_event_t **
+In file included from ../src/task/src/task_button.c:13:
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/task/inc/task_button.h:29:34: note: expected 'led_event_t *' but argument is of type 'led_event_t **'
+   29 | void procces_button(led_event_t *ao_evento);
+      |                     ~~~~~~~~~~~~~^~~~~~~~~
+../src/task/src/task_button.c:77:75: error: 'ao_evento' undeclared (first use in this function); did you mean 'p_ao_evento'?
+   77 |                         sprintf((char *)buffer,"Proccess button: %u \r\n",ao_evento);
+      |                                                                           ^~~~~~~~~
+      |                                                                           p_ao_evento
+../src/task/src/task_button.c:77:75: note: each undeclared identifier is reported only once for each function it appears in
+In file included from C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc/driver.h:55,
+                 from ../src/task/src/task_button.c:12:
+../src/task/src/task_button.c:78:30: warning: pointer targets in passing argument 3 of 'snprintf' differ in signedness [-Wpointer-sign]
+   78 |                         ELOG(buffer);
+      |                              ^~~~~~
+      |                              |
+      |                              uint8_t * {aka unsigned char *}
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc/eboard.h:61:60: note: in definition of macro 'ELOG'
+   61 |       elog_msg_len = snprintf(elog_msg, (ELOG_MAXLEN - 1), __VA_ARGS__);\
+      |                                                            ^~~~~~~~~~~
+In file included from ../src/task/src/task_button.c:8:
+C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.0.202305231506\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/stdio.h:276:45: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  276 | int     snprintf (char *__restrict, size_t, const char *__restrict, ...)
+      |                                             ^
+make: *** [src/task/src/subdir.mk:19: src/task/src/task_button.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+19:05:25 **** Incremental Build of configuration Debug for project memoria_dinamica_ejemplo_1 ****
+make -j12 all 
+arm-none-eabi-size   memoria_dinamica_ejemplo_1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  29372	    188	  20916	  50476	   c52c	memoria_dinamica_ejemplo_1.elf
+Finished building: default.size.stdout
+ 
+19:05:25 **** Incremental Build of configuration Debug for project tp2_rtos_ii_maisincho ****
+make -j12 all 
+arm-none-eabi-gcc "../src/task/src/task_button.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/hal/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/task/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"src/task/src/task_button.d" -MT"src/task/src/task_button.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "src/task/src/task_button.o"
+In file included from C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc/driver.h:55,
+                 from ../src/task/src/task_button.c:12:
+../src/task/src/task_button.c: In function 'task_button':
+../src/task/src/task_button.c:57:22: warning: pointer targets in passing argument 3 of 'snprintf' differ in signedness [-Wpointer-sign]
+   57 |                 ELOG(buffer);
+      |                      ^~~~~~
+      |                      |
+      |                      uint8_t * {aka unsigned char *}
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc/eboard.h:61:60: note: in definition of macro 'ELOG'
+   61 |       elog_msg_len = snprintf(elog_msg, (ELOG_MAXLEN - 1), __VA_ARGS__);\
+      |                                                            ^~~~~~~~~~~
+In file included from ../src/task/src/task_button.c:8:
+C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.0.202305231506\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/stdio.h:276:45: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  276 | int     snprintf (char *__restrict, size_t, const char *__restrict, ...)
+      |                                             ^
+../src/task/src/task_button.c:77:75: error: 'ao_evento' undeclared (first use in this function); did you mean 'p_ao_evento'?
+   77 |                         sprintf((char *)buffer,"Proccess button: %u \r\n",ao_evento);
+      |                                                                           ^~~~~~~~~
+      |                                                                           p_ao_evento
+../src/task/src/task_button.c:77:75: note: each undeclared identifier is reported only once for each function it appears in
+In file included from C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc/driver.h:55,
+                 from ../src/task/src/task_button.c:12:
+../src/task/src/task_button.c:78:30: warning: pointer targets in passing argument 3 of 'snprintf' differ in signedness [-Wpointer-sign]
+   78 |                         ELOG(buffer);
+      |                              ^~~~~~
+      |                              |
+      |                              uint8_t * {aka unsigned char *}
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc/eboard.h:61:60: note: in definition of macro 'ELOG'
+   61 |       elog_msg_len = snprintf(elog_msg, (ELOG_MAXLEN - 1), __VA_ARGS__);\
+      |                                                            ^~~~~~~~~~~
+In file included from ../src/task/src/task_button.c:8:
+C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.0.202305231506\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/stdio.h:276:45: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  276 | int     snprintf (char *__restrict, size_t, const char *__restrict, ...)
+      |                                             ^
+make: *** [src/task/src/subdir.mk:19: src/task/src/task_button.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+19:11:10 **** Incremental Build of configuration Debug for project memoria_dinamica_ejemplo_1 ****
+make -j12 all 
+arm-none-eabi-size   memoria_dinamica_ejemplo_1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  29372	    188	  20916	  50476	   c52c	memoria_dinamica_ejemplo_1.elf
+Finished building: default.size.stdout
+ 
+19:11:10 **** Incremental Build of configuration Debug for project tp2_rtos_ii_maisincho ****
+make -j12 all 
+arm-none-eabi-gcc "../src/task/src/task_button.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/hal/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/task/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"src/task/src/task_button.d" -MT"src/task/src/task_button.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "src/task/src/task_button.o"
+arm-none-eabi-gcc "../src/app/src/ao_led.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/hal/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/task/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"src/app/src/ao_led.d" -MT"src/app/src/ao_led.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "src/app/src/ao_led.o"
+In file included from C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc/driver.h:55,
+                 from ../src/task/src/task_button.c:12:
+../src/task/src/task_button.c: In function 'task_button':
+../src/task/src/task_button.c:57:22: warning: pointer targets in passing argument 3 of 'snprintf' differ in signedness [-Wpointer-sign]
+   57 |                 ELOG(buffer);
+      |                      ^~~~~~
+      |                      |
+      |                      uint8_t * {aka unsigned char *}
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc/eboard.h:61:60: note: in definition of macro 'ELOG'
+   61 |       elog_msg_len = snprintf(elog_msg, (ELOG_MAXLEN - 1), __VA_ARGS__);\
+      |                                                            ^~~~~~~~~~~
+In file included from ../src/task/src/task_button.c:8:
+C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.0.202305231506\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/stdio.h:276:45: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  276 | int     snprintf (char *__restrict, size_t, const char *__restrict, ...)
+      |                                             ^
+../src/app/src/ao_led.c:35:6: error: conflicting types for 'ao_led_send'; have '_Bool(ao_led_t *, led_event_t *)' {aka '_Bool(struct ao_led_s *, led_event_t *)'}
+   35 | bool ao_led_send(ao_led_t* hao,led_event_t* ao_event)
+      |      ^~~~~~~~~~~
+In file included from ../src/app/src/ao_led.c:7:
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc/ao_led.h:32:6: note: previous declaration of 'ao_led_send' with type '_Bool(ao_led_t *, led_event_t **)' {aka '_Bool(struct ao_led_s *, led_event_t **)'}
+   32 | bool ao_led_send(ao_led_t* hao, led_event_t** ao_event);
+      |      ^~~~~~~~~~~
+../src/task/src/task_button.c:64:60: warning: passing argument 2 of 'ao_led_send' from incompatible pointer type [-Wincompatible-pointer-types]
+   64 |                         cola_status = ao_led_send(&ao_led, p_ao_evento);//se encola el evento
+      |                                                            ^~~~~~~~~~~
+      |                                                            |
+      |                                                            led_event_t *
+In file included from ../src/task/src/task_button.c:14:
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc/ao_led.h:32:47: note: expected 'led_event_t **' but argument is of type 'led_event_t *'
+   32 | bool ao_led_send(ao_led_t* hao, led_event_t** ao_event);
+      |                                 ~~~~~~~~~~~~~~^~~~~~~~
+../src/task/src/task_button.c:64:25: warning: converting a packed 'led_event_t' pointer (alignment 1) to a 'led_event_t *' pointer (alignment 4) may result in an unaligned pointer value [-Waddress-of-packed-member]
+   64 |                         cola_status = ao_led_send(&ao_led, p_ao_evento);//se encola el evento
+      |                         ^~~~~~~~~~~
+In file included from ../src/task/src/task_button.c:13:
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/task/inc/task_button.h:20:1: note: defined here
+   20 | {
+      | ^
+../src/task/src/task_button.c:76:75: error: 'ao_evento' undeclared (first use in this function); did you mean 'p_ao_evento'?
+   76 |                         sprintf((char *)buffer,"Proccess button: %u \r\n",ao_evento);
+      |                                                                           ^~~~~~~~~
+      |                                                                           p_ao_evento
+../src/task/src/task_button.c:76:75: note: each undeclared identifier is reported only once for each function it appears in
+In file included from C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc/driver.h:55,
+                 from ../src/task/src/task_button.c:12:
+../src/task/src/task_button.c:77:30: warning: pointer targets in passing argument 3 of 'snprintf' differ in signedness [-Wpointer-sign]
+   77 |                         ELOG(buffer);
+      |                              ^~~~~~
+      |                              |
+      |                              uint8_t * {aka unsigned char *}
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc/eboard.h:61:60: note: in definition of macro 'ELOG'
+   61 |       elog_msg_len = snprintf(elog_msg, (ELOG_MAXLEN - 1), __VA_ARGS__);\
+      |                                                            ^~~~~~~~~~~
+In file included from ../src/task/src/task_button.c:8:
+C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.0.202305231506\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/stdio.h:276:45: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  276 | int     snprintf (char *__restrict, size_t, const char *__restrict, ...)
+      |                                             ^
+make: *** [src/app/src/subdir.mk:22: src/app/src/ao_led.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [src/task/src/subdir.mk:19: src/task/src/task_button.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+19:14:04 **** Incremental Build of configuration Debug for project memoria_dinamica_ejemplo_1 ****
+make -j12 all 
+arm-none-eabi-size   memoria_dinamica_ejemplo_1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  29372	    188	  20916	  50476	   c52c	memoria_dinamica_ejemplo_1.elf
+Finished building: default.size.stdout
+ 
+19:14:05 **** Incremental Build of configuration Debug for project tp2_rtos_ii_maisincho ****
+make -j12 all 
+arm-none-eabi-gcc "../src/task/src/task_button.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/hal/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/task/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"src/task/src/task_button.d" -MT"src/task/src/task_button.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "src/task/src/task_button.o"
+arm-none-eabi-gcc "../src/app/src/ao_led.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/hal/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/task/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"src/app/src/ao_led.d" -MT"src/app/src/ao_led.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "src/app/src/ao_led.o"
+../src/app/src/ao_led.c:35:6: error: conflicting types for 'ao_led_send'; have '_Bool(ao_led_t *, led_event_t)' {aka '_Bool(struct ao_led_s *, led_event_t)'}
+   35 | bool ao_led_send(ao_led_t* hao,led_event_t ao_event)
+      |      ^~~~~~~~~~~
+In file included from ../src/app/src/ao_led.c:7:
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc/ao_led.h:32:6: note: previous declaration of 'ao_led_send' with type '_Bool(ao_led_t *, led_event_t **)' {aka '_Bool(struct ao_led_s *, led_event_t **)'}
+   32 | bool ao_led_send(ao_led_t* hao, led_event_t** ao_event);
+      |      ^~~~~~~~~~~
+In file included from C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc/driver.h:55,
+                 from ../src/task/src/task_button.c:12:
+../src/task/src/task_button.c: In function 'task_button':
+../src/task/src/task_button.c:57:22: warning: pointer targets in passing argument 3 of 'snprintf' differ in signedness [-Wpointer-sign]
+   57 |                 ELOG(buffer);
+      |                      ^~~~~~
+      |                      |
+      |                      uint8_t * {aka unsigned char *}
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc/eboard.h:61:60: note: in definition of macro 'ELOG'
+   61 |       elog_msg_len = snprintf(elog_msg, (ELOG_MAXLEN - 1), __VA_ARGS__);\
+      |                                                            ^~~~~~~~~~~
+In file included from ../src/task/src/task_button.c:8:
+C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.0.202305231506\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/stdio.h:276:45: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  276 | int     snprintf (char *__restrict, size_t, const char *__restrict, ...)
+      |                                             ^
+../src/task/src/task_button.c:64:60: warning: passing argument 2 of 'ao_led_send' from incompatible pointer type [-Wincompatible-pointer-types]
+   64 |                         cola_status = ao_led_send(&ao_led, p_ao_evento);//se encola el evento
+      |                                                            ^~~~~~~~~~~
+      |                                                            |
+      |                                                            led_event_t *
+In file included from ../src/task/src/task_button.c:14:
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc/ao_led.h:32:47: note: expected 'led_event_t **' but argument is of type 'led_event_t *'
+   32 | bool ao_led_send(ao_led_t* hao, led_event_t** ao_event);
+      |                                 ~~~~~~~~~~~~~~^~~~~~~~
+../src/task/src/task_button.c:64:25: warning: converting a packed 'led_event_t' pointer (alignment 1) to a 'led_event_t *' pointer (alignment 4) may result in an unaligned pointer value [-Waddress-of-packed-member]
+   64 |                         cola_status = ao_led_send(&ao_led, p_ao_evento);//se encola el evento
+      |                         ^~~~~~~~~~~
+In file included from ../src/task/src/task_button.c:13:
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/task/inc/task_button.h:20:1: note: defined here
+   20 | {
+      | ^
+../src/task/src/task_button.c:76:75: error: 'ao_evento' undeclared (first use in this function); did you mean 'p_ao_evento'?
+   76 |                         sprintf((char *)buffer,"Proccess button: %u \r\n",ao_evento);
+      |                                                                           ^~~~~~~~~
+      |                                                                           p_ao_evento
+../src/task/src/task_button.c:76:75: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [src/app/src/subdir.mk:22: src/app/src/ao_led.o] Error 1
+In file included from C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc/driver.h:55,
+                 from ../src/task/src/task_button.c:12:
+../src/task/src/task_button.c:77:30: warning: pointer targets in passing argument 3 of 'snprintf' differ in signedness [-Wpointer-sign]
+   77 |                         ELOG(buffer);
+      |                              ^~~~~~
+      |                              |
+      |                              uint8_t * {aka unsigned char *}
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc/eboard.h:61:60: note: in definition of macro 'ELOG'
+   61 |       elog_msg_len = snprintf(elog_msg, (ELOG_MAXLEN - 1), __VA_ARGS__);\
+      |                                                            ^~~~~~~~~~~
+make: *** Waiting for unfinished jobs....
+In file included from ../src/task/src/task_button.c:8:
+C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.0.202305231506\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/stdio.h:276:45: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  276 | int     snprintf (char *__restrict, size_t, const char *__restrict, ...)
+      |                                             ^
+make: *** [src/task/src/subdir.mk:19: src/task/src/task_button.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+19:14:25 **** Incremental Build of configuration Debug for project memoria_dinamica_ejemplo_1 ****
+make -j12 all 
+arm-none-eabi-size   memoria_dinamica_ejemplo_1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  29372	    188	  20916	  50476	   c52c	memoria_dinamica_ejemplo_1.elf
+Finished building: default.size.stdout
+ 
+19:14:25 **** Incremental Build of configuration Debug for project tp2_rtos_ii_maisincho ****
+make -j12 all 
+arm-none-eabi-gcc "../src/task/src/task_button.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/hal/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/task/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"src/task/src/task_button.d" -MT"src/task/src/task_button.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "src/task/src/task_button.o"
+arm-none-eabi-gcc "../src/app/src/ao_led.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/hal/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/task/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"src/app/src/ao_led.d" -MT"src/app/src/ao_led.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "src/app/src/ao_led.o"
+In file included from C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc/driver.h:55,
+                 from ../src/task/src/task_button.c:12:
+../src/task/src/task_button.c: In function 'task_button':
+../src/task/src/task_button.c:57:22: warning: pointer targets in passing argument 3 of 'snprintf' differ in signedness [-Wpointer-sign]
+   57 |                 ELOG(buffer);
+      |                      ^~~~~~
+      |                      |
+      |                      uint8_t * {aka unsigned char *}
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc/eboard.h:61:60: note: in definition of macro 'ELOG'
+   61 |       elog_msg_len = snprintf(elog_msg, (ELOG_MAXLEN - 1), __VA_ARGS__);\
+      |                                                            ^~~~~~~~~~~
+In file included from ../src/task/src/task_button.c:8:
+C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.0.202305231506\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/stdio.h:276:45: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  276 | int     snprintf (char *__restrict, size_t, const char *__restrict, ...)
+      |                                             ^
+../src/task/src/task_button.c:76:75: error: 'ao_evento' undeclared (first use in this function); did you mean 'p_ao_evento'?
+   76 |                         sprintf((char *)buffer,"Proccess button: %u \r\n",ao_evento);
+      |                                                                           ^~~~~~~~~
+      |                                                                           p_ao_evento
+../src/task/src/task_button.c:76:75: note: each undeclared identifier is reported only once for each function it appears in
+In file included from C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc/driver.h:55,
+                 from ../src/task/src/task_button.c:12:
+../src/task/src/task_button.c:77:30: warning: pointer targets in passing argument 3 of 'snprintf' differ in signedness [-Wpointer-sign]
+   77 |                         ELOG(buffer);
+      |                              ^~~~~~
+      |                              |
+      |                              uint8_t * {aka unsigned char *}
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc/eboard.h:61:60: note: in definition of macro 'ELOG'
+   61 |       elog_msg_len = snprintf(elog_msg, (ELOG_MAXLEN - 1), __VA_ARGS__);\
+      |                                                            ^~~~~~~~~~~
+In file included from ../src/task/src/task_button.c:8:
+C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.0.202305231506\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/stdio.h:276:45: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  276 | int     snprintf (char *__restrict, size_t, const char *__restrict, ...)
+      |                                             ^
+make: *** [src/task/src/subdir.mk:19: src/task/src/task_button.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+19:14:45 **** Incremental Build of configuration Debug for project memoria_dinamica_ejemplo_1 ****
+make -j12 all 
+arm-none-eabi-size   memoria_dinamica_ejemplo_1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  29372	    188	  20916	  50476	   c52c	memoria_dinamica_ejemplo_1.elf
+Finished building: default.size.stdout
+ 
+19:14:46 **** Incremental Build of configuration Debug for project tp2_rtos_ii_maisincho ****
+make -j12 all 
+arm-none-eabi-gcc "../src/task/src/task_button.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/hal/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/task/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"src/task/src/task_button.d" -MT"src/task/src/task_button.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "src/task/src/task_button.o"
+In file included from C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc/driver.h:55,
+                 from ../src/task/src/task_button.c:12:
+../src/task/src/task_button.c: In function 'task_button':
+../src/task/src/task_button.c:57:22: warning: pointer targets in passing argument 3 of 'snprintf' differ in signedness [-Wpointer-sign]
+   57 |                 ELOG(buffer);
+      |                      ^~~~~~
+      |                      |
+      |                      uint8_t * {aka unsigned char *}
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc/eboard.h:61:60: note: in definition of macro 'ELOG'
+   61 |       elog_msg_len = snprintf(elog_msg, (ELOG_MAXLEN - 1), __VA_ARGS__);\
+      |                                                            ^~~~~~~~~~~
+In file included from ../src/task/src/task_button.c:8:
+C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.0.202305231506\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/stdio.h:276:45: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  276 | int     snprintf (char *__restrict, size_t, const char *__restrict, ...)
+      |                                             ^
+In file included from C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc/driver.h:55,
+                 from ../src/task/src/task_button.c:12:
+../src/task/src/task_button.c:77:30: warning: pointer targets in passing argument 3 of 'snprintf' differ in signedness [-Wpointer-sign]
+   77 |                         ELOG(buffer);
+      |                              ^~~~~~
+      |                              |
+      |                              uint8_t * {aka unsigned char *}
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc/eboard.h:61:60: note: in definition of macro 'ELOG'
+   61 |       elog_msg_len = snprintf(elog_msg, (ELOG_MAXLEN - 1), __VA_ARGS__);\
+      |                                                            ^~~~~~~~~~~
+In file included from ../src/task/src/task_button.c:8:
+C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.0.202305231506\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/stdio.h:276:45: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  276 | int     snprintf (char *__restrict, size_t, const char *__restrict, ...)
+      |                                             ^
+arm-none-eabi-gcc -o "tp2_rtos_ii_maisincho.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\thony\Documents\Maestria\RTOS II\Practica\tp2_rtos_ii_maisincho\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="tp2_rtos_ii_maisincho.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: tp2_rtos_ii_maisincho.elf
+ 
+arm-none-eabi-size   tp2_rtos_ii_maisincho.elf 
+arm-none-eabi-objdump -h -S  tp2_rtos_ii_maisincho.elf  > "tp2_rtos_ii_maisincho.list"
+   text	   data	    bss	    dec	    hex	filename
+  27908	    188	  19996	  48092	   bbdc	tp2_rtos_ii_maisincho.elf
+Finished building: default.size.stdout
+ 
+Finished building: tp2_rtos_ii_maisincho.list
+ 
+19:14:50 **** Incremental Build of configuration Debug for project tp2_rtos_ii_maisincho ****
+make -j12 all 
+arm-none-eabi-size   tp2_rtos_ii_maisincho.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27908	    188	  19996	  48092	   bbdc	tp2_rtos_ii_maisincho.elf
+Finished building: default.size.stdout
+ 
+19:15:36 **** Incremental Build of configuration Debug for project tp2_rtos_ii_maisincho ****
+make -j12 all 
+arm-none-eabi-size   tp2_rtos_ii_maisincho.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27908	    188	  19996	  48092	   bbdc	tp2_rtos_ii_maisincho.elf
+Finished building: default.size.stdout
+ 
+19:24:20 **** Incremental Build of configuration Debug for project tp2_rtos_ii_maisincho ****
+make -j12 all 
+arm-none-eabi-size   tp2_rtos_ii_maisincho.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27908	    188	  19996	  48092	   bbdc	tp2_rtos_ii_maisincho.elf
+Finished building: default.size.stdout
+ 
+19:26:50 **** Incremental Build of configuration Debug for project memoria_dinamica_ejemplo_1 ****
+make -j12 all 
+arm-none-eabi-size   memoria_dinamica_ejemplo_1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  29372	    188	  20916	  50476	   c52c	memoria_dinamica_ejemplo_1.elf
+Finished building: default.size.stdout
+ 
+19:26:51 **** Incremental Build of configuration Debug for project tp2_rtos_ii_maisincho ****
+make -j12 all 
+arm-none-eabi-gcc "../src/task/src/task_button.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/hal/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/task/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"src/task/src/task_button.d" -MT"src/task/src/task_button.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "src/task/src/task_button.o"
+arm-none-eabi-gcc "../src/app/src/ao_led.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/hal/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/task/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"src/app/src/ao_led.d" -MT"src/app/src/ao_led.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "src/app/src/ao_led.o"
+In file included from C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc/driver.h:55,
+                 from ../src/task/src/task_button.c:12:
+../src/task/src/task_button.c: In function 'task_button':
+../src/task/src/task_button.c:57:22: warning: pointer targets in passing argument 3 of 'snprintf' differ in signedness [-Wpointer-sign]
+   57 |                 ELOG(buffer);
+      |                      ^~~~~~
+      |                      |
+      |                      uint8_t * {aka unsigned char *}
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc/eboard.h:61:60: note: in definition of macro 'ELOG'
+   61 |       elog_msg_len = snprintf(elog_msg, (ELOG_MAXLEN - 1), __VA_ARGS__);\
+      |                                                            ^~~~~~~~~~~
+In file included from ../src/task/src/task_button.c:8:
+C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.0.202305231506\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/stdio.h:276:45: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  276 | int     snprintf (char *__restrict, size_t, const char *__restrict, ...)
+      |                                             ^
+In file included from C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc/driver.h:55,
+                 from ../src/task/src/task_button.c:12:
+../src/task/src/task_button.c:77:30: warning: pointer targets in passing argument 3 of 'snprintf' differ in signedness [-Wpointer-sign]
+   77 |                         ELOG(buffer);
+      |                              ^~~~~~
+      |                              |
+      |                              uint8_t * {aka unsigned char *}
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc/eboard.h:61:60: note: in definition of macro 'ELOG'
+   61 |       elog_msg_len = snprintf(elog_msg, (ELOG_MAXLEN - 1), __VA_ARGS__);\
+      |                                                            ^~~~~~~~~~~
+In file included from ../src/task/src/task_button.c:8:
+C:\ST\STM32CubeIDE_1.13.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.0.202305231506\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/stdio.h:276:45: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  276 | int     snprintf (char *__restrict, size_t, const char *__restrict, ...)
+      |                                             ^
+In file included from C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc/driver.h:55,
+                 from ../src/app/src/ao_led.c:8:
+../src/app/src/ao_led.c: In function 'task_':
+../src/app/src/ao_led.c:27:12: warning: format '%d' expects argument of type 'int', but argument 4 has type 'led_event_t *' [-Wformat=]
+   27 |       ELOG("ao, led:%d", p_ao_evento);
+      |            ^~~~~~~~~~~~  ~~~~~~~~~~~
+      |                          |
+      |                          led_event_t *
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc/eboard.h:61:60: note: in definition of macro 'ELOG'
+   61 |       elog_msg_len = snprintf(elog_msg, (ELOG_MAXLEN - 1), __VA_ARGS__);\
+      |                                                            ^~~~~~~~~~~
+../src/app/src/ao_led.c:27:22: note: format string is defined here
+   27 |       ELOG("ao, led:%d", p_ao_evento);
+      |                     ~^
+      |                      |
+      |                      int
+../src/app/src/ao_led.c:28:26: warning: passing argument 1 of 'proccess_ao_evento' from incompatible pointer type [-Wincompatible-pointer-types]
+   28 |       proccess_ao_evento(&p_ao_evento);
+      |                          ^~~~~~~~~~~~
+      |                          |
+      |                          led_event_t **
+In file included from ../src/app/src/ao_led.c:7:
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc/ao_led.h:36:38: note: expected 'led_event_t *' but argument is of type 'led_event_t **'
+   36 | void proccess_ao_evento(led_event_t *evento_t);
+      |                         ~~~~~~~~~~~~~^~~~~~~~
+../src/app/src/ao_led.c:29:26: error: incompatible type for argument 2 of 'hao->callback'
+   29 |       hao->callback(hao, p_ao_evento);
+      |                          ^~~~~~~~~~~
+      |                          |
+      |                          led_event_t *
+../src/app/src/ao_led.c:29:26: note: expected 'led_event_t' but argument is of type 'led_event_t *'
+../src/app/src/ao_led.c:20:15: warning: unused variable 'p_ao_evento_recibir' [-Wunused-variable]
+   20 |   led_event_t p_ao_evento_recibir;
+      |               ^~~~~~~~~~~~~~~~~~~
+make: *** [src/app/src/subdir.mk:22: src/app/src/ao_led.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+19:27:04 **** Incremental Build of configuration Debug for project memoria_dinamica_ejemplo_1 ****
+make -j12 all 
+arm-none-eabi-size   memoria_dinamica_ejemplo_1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  29372	    188	  20916	  50476	   c52c	memoria_dinamica_ejemplo_1.elf
+Finished building: default.size.stdout
+ 
+19:27:05 **** Incremental Build of configuration Debug for project tp2_rtos_ii_maisincho ****
+make -j12 all 
+arm-none-eabi-gcc "../src/app/src/ao_led.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/hal/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/task/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"src/app/src/ao_led.d" -MT"src/app/src/ao_led.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "src/app/src/ao_led.o"
+arm-none-eabi-gcc -o "tp2_rtos_ii_maisincho.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\thony\Documents\Maestria\RTOS II\Practica\tp2_rtos_ii_maisincho\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="tp2_rtos_ii_maisincho.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: tp2_rtos_ii_maisincho.elf
+ 
+arm-none-eabi-size   tp2_rtos_ii_maisincho.elf 
+arm-none-eabi-objdump -h -S  tp2_rtos_ii_maisincho.elf  > "tp2_rtos_ii_maisincho.list"
+   text	   data	    bss	    dec	    hex	filename
+  27948	    188	  19996	  48132	   bc04	tp2_rtos_ii_maisincho.elf
+Finished building: default.size.stdout
+ 
+Finished building: tp2_rtos_ii_maisincho.list
+ 
+19:27:16 **** Incremental Build of configuration Debug for project memoria_dinamica_ejemplo_1 ****
+make -j12 all 
+arm-none-eabi-size   memoria_dinamica_ejemplo_1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  29372	    188	  20916	  50476	   c52c	memoria_dinamica_ejemplo_1.elf
+Finished building: default.size.stdout
+ 
+19:27:17 **** Incremental Build of configuration Debug for project tp2_rtos_ii_maisincho ****
+make -j12 all 
+arm-none-eabi-size   tp2_rtos_ii_maisincho.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27948	    188	  19996	  48132	   bc04	tp2_rtos_ii_maisincho.elf
+Finished building: default.size.stdout
+ 
+19:27:21 **** Incremental Build of configuration Debug for project tp2_rtos_ii_maisincho ****
+make -j12 all 
+arm-none-eabi-size   tp2_rtos_ii_maisincho.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27948	    188	  19996	  48132	   bc04	tp2_rtos_ii_maisincho.elf
+Finished building: default.size.stdout
+ 
+19:28:26 **** Incremental Build of configuration Debug for project tp2_rtos_ii_maisincho ****
+make -j12 all 
+arm-none-eabi-size   tp2_rtos_ii_maisincho.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27948	    188	  19996	  48132	   bc04	tp2_rtos_ii_maisincho.elf
+Finished building: default.size.stdout
+ 
+19:28:31 **** Incremental Build of configuration Debug for project tp2_rtos_ii_maisincho ****
+make -j12 all 
+arm-none-eabi-size   tp2_rtos_ii_maisincho.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27948	    188	  19996	  48132	   bc04	tp2_rtos_ii_maisincho.elf
+Finished building: default.size.stdout
+ 
+19:32:17 **** Incremental Build of configuration Debug for project memoria_dinamica_ejemplo_1 ****
+make -j12 all 
+arm-none-eabi-size   memoria_dinamica_ejemplo_1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  29372	    188	  20916	  50476	   c52c	memoria_dinamica_ejemplo_1.elf
+Finished building: default.size.stdout
+ 
+19:32:18 **** Incremental Build of configuration Debug for project tp2_rtos_ii_maisincho ****
+make -j12 all 
+arm-none-eabi-gcc "../src/app/src/ao_led.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/hal/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/task/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"src/app/src/ao_led.d" -MT"src/app/src/ao_led.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "src/app/src/ao_led.o"
+../src/app/src/ao_led.c: In function 'task_':
+../src/app/src/ao_led.c:28:26: error: incompatible type for argument 1 of 'proccess_ao_evento'
+   28 |       proccess_ao_evento(p_ao_evento_recibir);
+      |                          ^~~~~~~~~~~~~~~~~~~
+      |                          |
+      |                          led_event_t
+In file included from ../src/app/src/ao_led.c:7:
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc/ao_led.h:36:38: note: expected 'led_event_t *' but argument is of type 'led_event_t'
+   36 | void proccess_ao_evento(led_event_t *evento_t);
+      |                         ~~~~~~~~~~~~~^~~~~~~~
+make: *** [src/app/src/subdir.mk:22: src/app/src/ao_led.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+19:33:12 **** Incremental Build of configuration Debug for project memoria_dinamica_ejemplo_1 ****
+make -j12 all 
+arm-none-eabi-size   memoria_dinamica_ejemplo_1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  29372	    188	  20916	  50476	   c52c	memoria_dinamica_ejemplo_1.elf
+Finished building: default.size.stdout
+ 
+19:33:12 **** Incremental Build of configuration Debug for project tp2_rtos_ii_maisincho ****
+make -j12 all 
+arm-none-eabi-gcc "../src/app/src/ao_led.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/hal/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/task/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"src/app/src/ao_led.d" -MT"src/app/src/ao_led.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "src/app/src/ao_led.o"
+In file included from C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc/driver.h:55,
+                 from ../src/app/src/ao_led.c:8:
+../src/app/src/ao_led.c: In function 'task_':
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc/eboard.h:61:22: warning: 'p_ao_evento_recibir' is used uninitialized [-Wuninitialized]
+   61 |       elog_msg_len = snprintf(elog_msg, (ELOG_MAXLEN - 1), __VA_ARGS__);\
+      |                      ^~~~~~~~
+../src/app/src/ao_led.c:20:15: note: 'p_ao_evento_recibir' was declared here
+   20 |   led_event_t p_ao_evento_recibir;
+      |               ^~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "tp2_rtos_ii_maisincho.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\thony\Documents\Maestria\RTOS II\Practica\tp2_rtos_ii_maisincho\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="tp2_rtos_ii_maisincho.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: tp2_rtos_ii_maisincho.elf
+ 
+arm-none-eabi-size   tp2_rtos_ii_maisincho.elf 
+arm-none-eabi-objdump -h -S  tp2_rtos_ii_maisincho.elf  > "tp2_rtos_ii_maisincho.list"
+   text	   data	    bss	    dec	    hex	filename
+  27948	    188	  19996	  48132	   bc04	tp2_rtos_ii_maisincho.elf
+Finished building: default.size.stdout
+ 
+Finished building: tp2_rtos_ii_maisincho.list
+ 
+19:33:21 **** Incremental Build of configuration Debug for project tp2_rtos_ii_maisincho ****
+make -j12 all 
+arm-none-eabi-size   tp2_rtos_ii_maisincho.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27948	    188	  19996	  48132	   bc04	tp2_rtos_ii_maisincho.elf
+Finished building: default.size.stdout
+ 
+19:37:04 **** Incremental Build of configuration Debug for project tp2_rtos_ii_maisincho ****
+make -j12 all 
+arm-none-eabi-size   tp2_rtos_ii_maisincho.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27948	    188	  19996	  48132	   bc04	tp2_rtos_ii_maisincho.elf
+Finished building: default.size.stdout
+ 
+19:44:25 **** Incremental Build of configuration Debug for project memoria_dinamica_ejemplo_1 ****
+make -j12 all 
+arm-none-eabi-size   memoria_dinamica_ejemplo_1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  29372	    188	  20916	  50476	   c52c	memoria_dinamica_ejemplo_1.elf
+Finished building: default.size.stdout
+ 
+19:44:25 **** Incremental Build of configuration Debug for project tp2_rtos_ii_maisincho ****
+make -j12 all 
+arm-none-eabi-gcc "../src/app/src/ao_led.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/hal/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/task/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"src/app/src/ao_led.d" -MT"src/app/src/ao_led.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "src/app/src/ao_led.o"
+arm-none-eabi-gcc -o "tp2_rtos_ii_maisincho.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\thony\Documents\Maestria\RTOS II\Practica\tp2_rtos_ii_maisincho\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="tp2_rtos_ii_maisincho.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: tp2_rtos_ii_maisincho.elf
+ 
+arm-none-eabi-size   tp2_rtos_ii_maisincho.elf 
+arm-none-eabi-objdump -h -S  tp2_rtos_ii_maisincho.elf  > "tp2_rtos_ii_maisincho.list"
+   text	   data	    bss	    dec	    hex	filename
+  27948	    188	  19996	  48132	   bc04	tp2_rtos_ii_maisincho.elf
+Finished building: default.size.stdout
+ 
+Finished building: tp2_rtos_ii_maisincho.list
+ 
+19:44:31 **** Incremental Build of configuration Debug for project tp2_rtos_ii_maisincho ****
+make -j12 all 
+arm-none-eabi-size   tp2_rtos_ii_maisincho.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27948	    188	  19996	  48132	   bc04	tp2_rtos_ii_maisincho.elf
+Finished building: default.size.stdout
+ 
+19:45:29 **** Incremental Build of configuration Debug for project tp2_rtos_ii_maisincho ****
+make -j12 all 
+arm-none-eabi-size   tp2_rtos_ii_maisincho.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27948	    188	  19996	  48132	   bc04	tp2_rtos_ii_maisincho.elf
+Finished building: default.size.stdout
+ 
+19:56:05 **** Incremental Build of configuration Debug for project memoria_dinamica_ejemplo_1 ****
+make -j12 all 
+arm-none-eabi-size   memoria_dinamica_ejemplo_1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  29372	    188	  20916	  50476	   c52c	memoria_dinamica_ejemplo_1.elf
+Finished building: default.size.stdout
+ 
+19:56:05 **** Incremental Build of configuration Debug for project tp2_rtos_ii_maisincho ****
+make -j12 all 
+arm-none-eabi-gcc "../src/app/src/ao_led.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/hal/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/task/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"src/app/src/ao_led.d" -MT"src/app/src/ao_led.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "src/app/src/ao_led.o"
+../src/app/src/ao_led.c: In function 'task_':
+../src/app/src/ao_led.c:28:26: error: incompatible type for argument 1 of 'proccess_ao_evento'
+   28 |       proccess_ao_evento(p_ao_evento_recibir);
+      |                          ^~~~~~~~~~~~~~~~~~~
+      |                          |
+      |                          led_event_t
+In file included from ../src/app/src/ao_led.c:7:
+C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc/ao_led.h:36:38: note: expected 'led_event_t *' but argument is of type 'led_event_t'
+   36 | void proccess_ao_evento(led_event_t *evento_t);
+      |                         ~~~~~~~~~~~~~^~~~~~~~
+make: *** [src/app/src/subdir.mk:22: src/app/src/ao_led.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+19:59:12 **** Incremental Build of configuration Debug for project memoria_dinamica_ejemplo_1 ****
+make -j12 all 
+arm-none-eabi-size   memoria_dinamica_ejemplo_1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  29372	    188	  20916	  50476	   c52c	memoria_dinamica_ejemplo_1.elf
+Finished building: default.size.stdout
+ 
+19:59:13 **** Incremental Build of configuration Debug for project tp2_rtos_ii_maisincho ****
+make -j12 all 
+arm-none-eabi-gcc "../src/app/src/ao_led.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/app/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/hal/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/lib/inc" -I"C:/Users/thony/Documents/Maestria/RTOS II/Practica/tp2_rtos_ii_maisincho/src/task/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"src/app/src/ao_led.d" -MT"src/app/src/ao_led.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "src/app/src/ao_led.o"
+arm-none-eabi-gcc -o "tp2_rtos_ii_maisincho.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\thony\Documents\Maestria\RTOS II\Practica\tp2_rtos_ii_maisincho\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="tp2_rtos_ii_maisincho.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: tp2_rtos_ii_maisincho.elf
+ 
+arm-none-eabi-size   tp2_rtos_ii_maisincho.elf 
+arm-none-eabi-objdump -h -S  tp2_rtos_ii_maisincho.elf  > "tp2_rtos_ii_maisincho.list"
+   text	   data	    bss	    dec	    hex	filename
+  27936	    188	  19996	  48120	   bbf8	tp2_rtos_ii_maisincho.elf
+Finished building: default.size.stdout
+ 
+Finished building: tp2_rtos_ii_maisincho.list
+ 
+19:59:19 **** Incremental Build of configuration Debug for project tp2_rtos_ii_maisincho ****
+make -j12 all 
+arm-none-eabi-size   tp2_rtos_ii_maisincho.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27936	    188	  19996	  48120	   bbf8	tp2_rtos_ii_maisincho.elf
+Finished building: default.size.stdout
+ 

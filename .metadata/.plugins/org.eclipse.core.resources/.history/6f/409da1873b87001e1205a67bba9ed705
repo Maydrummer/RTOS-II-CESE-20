@@ -21,14 +21,14 @@ static void task_(void* argument)  //el argumento de la funcion es la estructura
   while(true)
   {
 	ELOG("--------- TASK ACTIVE OBJECT------- \r\n");
-    if(pdPASS == xQueueReceive(hao->hqueue, &p_ao_evento_recibir, portMAX_DELAY)) //No queda bloqueado esperando un evento
+    if(pdPASS == xQueueReceive(hao->hqueue, &p_ao_evento, portMAX_DELAY)) //No queda bloqueado esperando un evento
     {
     	// procesar evento con maquina de estado
-      ELOG("ao, led:%d", p_ao_evento_recibir);
-      proccess_ao_evento(&p_ao_evento_recibir);
-      hao->callback(hao, p_ao_evento_recibir);
+      ELOG("ao, led:%d", p_ao_evento);
+      proccess_ao_evento(&p_ao_evento);
+      hao->callback(hao, p_ao_evento);
     }
-	//vPortFree((void*)p_ao_evento);
+	vPortFree((void*)p_ao_evento);
 
 
   }

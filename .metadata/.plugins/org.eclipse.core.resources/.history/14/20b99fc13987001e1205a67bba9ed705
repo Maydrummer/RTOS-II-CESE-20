@@ -29,7 +29,7 @@ struct ao_led_s
 
 
 
-bool ao_led_send(ao_led_t* hao, led_event_t* ao_event);
+bool ao_led_send(ao_led_t* hao, led_event_t** ao_event);
 
 void ao_led_init(ao_led_t* hao, ao_led_callbak_t callback);
 

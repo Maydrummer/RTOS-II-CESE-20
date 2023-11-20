@@ -1,4 +1,4 @@
-18:28:25 **** Incremental Build of configuration Debug for project memoria_dinamica_ejemplo_1 ****
+19:59:12 **** Incremental Build of configuration Debug for project memoria_dinamica_ejemplo_1 ****
 make -j12 all 
 arm-none-eabi-size   memoria_dinamica_ejemplo_1.elf 
    text	   data	    bss	    dec	    hex	filename
@@ -6,5 +6,5 @@ arm-none-eabi-size   memoria_dinamica_ejemplo_1.elf
 Finished building: default.size.stdout
  
 
-18:28:25 Build Finished. 0 errors, 0 warnings. (took 373ms)
+19:59:13 Build Finished. 0 errors, 0 warnings. (took 359ms)
 

@@ -20,7 +20,7 @@ uint8_t buffer[100];
 //led_event_t ao_evento; //Notificacion a encolar
 ao_led_t ao_led; //es la estructura del objeto activo, contiene una cola y el callback de la funcion
 
-led_event_t *p_ao_evento;
+
 
 void led_state_callback_(ao_led_t* hao, led_event_t state) //Esta funcion se llama cada vez que se cambia un evento
 {
@@ -55,7 +55,7 @@ void task_button(void* argument) //tarea productora, actualiza los eventos en la
 		//Productora de eventos
 		sprintf((char *)buffer,"Tiempo presionado: %lu\r\n" ,pressed_time);
 		ELOG(buffer);
-		p_ao_evento = pvPortMalloc(sizeof(led_event_t)); //puntero que guardara la direccion de la memoria dinamica asignada
+		led_event_t *p_ao_evento = pvPortMalloc(sizeof(led_event_t)); //puntero que guardara la direccion de la memoria dinamica asignada
 		if (NULL != p_ao_evento ) {
 			ELOG("Se alocaron %d bytes", sizeof(led_event_t));
 	        *p_ao_evento = inicial; //reset variable
@@ -73,7 +73,7 @@ void task_button(void* argument) //tarea productora, actualiza los eventos en la
 				ELOG("Memoria liberada");
 
 			}
-			//sprintf((char *)buffer,"Proccess button: %u \r\n",ao_evento);
+			sprintf((char *)buffer,"Proccess button: %u \r\n",ao_evento);
 			ELOG(buffer);
 		}
 		else

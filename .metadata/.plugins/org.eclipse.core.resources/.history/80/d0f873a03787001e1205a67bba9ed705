@@ -11,31 +11,28 @@
 #define QUEUE_LENGTH_            (5)
 #define QUEUE_ITEM_SIZE_         (sizeof(led_event_t))
 
-extern led_event_t *p_ao_evento;
-
 
 static void task_(void* argument)  //el argumento de la funcion es la estructura del objeto activo
 {
   ao_led_t* hao = (ao_led_t*)argument; //aca lo desempaqueta en hao
-  led_event_t p_ao_evento_recibir;
+  static led_event_t p_ao_evento;
   while(true)
   {
 	ELOG("--------- TASK ACTIVE OBJECT------- \r\n");
-    if(pdPASS == xQueueReceive(hao->hqueue, &p_ao_evento_recibir, portMAX_DELAY)) //No queda bloqueado esperando un evento
+    if(pdPASS == xQueueReceive(hao->hqueue, &p_ao_evento, portMAX_DELAY)) //No queda bloqueado esperando un evento
     {
     	// procesar evento con maquina de estado
-      ELOG("ao, led:%d", p_ao_evento_recibir);
-      proccess_ao_evento(&p_ao_evento_recibir);
-      hao->callback(hao, p_ao_evento_recibir);
+      ELOG("ao, led:%d", p_ao_evento);
+      proccess_ao_evento(&p_ao_evento);
+      hao->callback(hao, p_ao_evento);
     }
-	//vPortFree((void*)p_ao_evento);
-
+    //vPortFree((void*));
 
   }
 }
 
 
-bool ao_led_send(ao_led_t* hao,led_event_t* ao_event)
+bool ao_led_send(ao_led_t* hao,led_event_t** ao_event)
 {
 	return (pdPASS == xQueueSend(hao->hqueue, (void*)&ao_event, 0));
 }
