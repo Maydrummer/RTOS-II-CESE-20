@@ -30,7 +30,7 @@ static void task_(void* argument)  //el argumento de la funcion es la estructura
         hao->callback(hao, p_ao_evento_recibir);
         //vPortFree((void*)p_ao_evento_recibir);
     }
-	//vPortFree((void*)p_ao_evento);
+	vPortFree((void*)p_ao_evento);
 
 
   }

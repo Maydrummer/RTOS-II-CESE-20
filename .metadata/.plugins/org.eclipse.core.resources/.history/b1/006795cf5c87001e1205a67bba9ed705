@@ -11,7 +11,7 @@
 #define QUEUE_LENGTH_            (5)
 #define QUEUE_ITEM_SIZE_         (sizeof(led_event_t))
 
-extern led_event_t *p_ao_evento; //se trae el puntero que contiene la direccion de asignacion dinamica
+extern led_event_t *p_ao_evento;
 
 
 static void task_(void* argument)  //el argumento de la funcion es la estructura del objeto activo
@@ -24,11 +24,9 @@ static void task_(void* argument)  //el argumento de la funcion es la estructura
     if(pdPASS == xQueueReceive(hao->hqueue, &p_ao_evento_recibir, portMAX_DELAY)) //No queda bloqueado esperando un evento
     {
     	// procesar evento con maquina de estado
-    	ELOG("Se recibio el evento en TASK ACTIVE OBJECT...");
-	    ELOG("ao, led:%d", p_ao_evento_recibir);
-        proccess_ao_evento(&p_ao_evento_recibir);
-        hao->callback(hao, p_ao_evento_recibir);
-        //vPortFree((void*)p_ao_evento_recibir);
+      ELOG("ao, led:%d", p_ao_evento_recibir);
+      proccess_ao_evento(&p_ao_evento_recibir);
+      hao->callback(hao, p_ao_evento_recibir);
     }
 	//vPortFree((void*)p_ao_evento);
 
@@ -37,10 +35,9 @@ static void task_(void* argument)  //el argumento de la funcion es la estructura
 }
 
 
-bool ao_led_send(ao_led_t* hao,led_event_t* ao_event) //recibimos la direccion de memoria de p_ao_evento, la que nos dio el malloc
+bool ao_led_send(ao_led_t* hao,led_event_t* ao_event)
 {
-	return (pdPASS == xQueueSend(hao->hqueue, (void*)&ao_event, 0)); //pasamos la direccion de ao_event, de esta forma la cola hacia copia por referencia
-																	// de lo que contiene el puntero ao_event
+	return (pdPASS == xQueueSend(hao->hqueue, (void*)&ao_event, 0));
 }
 
 void ao_led_init(ao_led_t* hao, ao_led_callbak_t callback)

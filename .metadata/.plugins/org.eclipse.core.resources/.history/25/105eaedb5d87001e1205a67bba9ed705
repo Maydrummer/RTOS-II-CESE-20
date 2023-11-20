@@ -11,13 +11,12 @@
 #define QUEUE_LENGTH_            (5)
 #define QUEUE_ITEM_SIZE_         (sizeof(led_event_t))
 
-extern led_event_t *p_ao_evento; //se trae el puntero que contiene la direccion de asignacion dinamica
 
 
 static void task_(void* argument)  //el argumento de la funcion es la estructura del objeto activo
 {
   ao_led_t* hao = (ao_led_t*)argument; //aca lo desempaqueta en hao
-  led_event_t p_ao_evento_recibir;
+  led_event_t* p_ao_evento_recibir;
   while(true)
   {
 	ELOG("--------- TASK ACTIVE OBJECT------- \r\n");
@@ -28,7 +27,7 @@ static void task_(void* argument)  //el argumento de la funcion es la estructura
 	    ELOG("ao, led:%d", p_ao_evento_recibir);
         proccess_ao_evento(&p_ao_evento_recibir);
         hao->callback(hao, p_ao_evento_recibir);
-        //vPortFree((void*)p_ao_evento_recibir);
+        vPortFree((void*)p_ao_evento_recibir);
     }
 	//vPortFree((void*)p_ao_evento);
 

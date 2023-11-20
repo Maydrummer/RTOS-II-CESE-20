@@ -17,7 +17,7 @@
 TickType_t pressed_start=0;
 TickType_t pressed_time;
 uint8_t buffer[100];
-
+//led_event_t ao_evento; //Notificacion a encolar, se la usa con asignacion estatica
 ao_led_t ao_led; //Variable con la estructura del objeto activo, contiene una cola y el callback de la funcion
 
 
@@ -77,6 +77,7 @@ void task_button(void* argument) //tarea productora, actualiza los eventos en la
 				ELOG("Memoria liberada");
 
 			}
+			sprintf((char *)buffer,"Proccess button: %u \r\n",p_ao_evento);
 			ELOG(buffer);
 		}
 		else

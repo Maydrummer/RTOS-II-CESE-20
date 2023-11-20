@@ -17,16 +17,11 @@
 TickType_t pressed_start=0;
 TickType_t pressed_time;
 uint8_t buffer[100];
-
-ao_led_t ao_led; //Variable con la estructura del objeto activo, contiene una cola y el callback de la funcion
-
-
+//led_event_t ao_evento; //Notificacion a encolar, se la usa con asignacion estatica
+ao_led_t ao_led; //es la variable con la estructura del objeto activo, contiene una cola y el callback de la funcion
 //---------------------------- MEMORIA DINAMICA TP2----------------------------------------
-//Integrantes: Anthony Maisincho Jivaja, Jesus Gonzales Davila
 
 led_event_t *p_ao_evento; //Creacion del puntero que contendra la direccion de memoria que nos asigne la funcion MALLOC
-
-
 
 void led_state_callback_(ao_led_t* hao, led_event_t state) //Esta funcion se llama cada vez que se cambia un evento
 {
@@ -52,21 +47,23 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) //Interrupcion del sw button
 
 void task_button(void* argument) //tarea productora, actualiza los eventos en la cola
 {
+	//ao_evento = inicial;
 	ao_led_init(&ao_led, led_state_callback_); //se inicializa el objeto activo, y se pasa la funcion que sera el callback del objeto activo
-	bool cola_status; //Para hacer un assert de la creacion de la cola
+	bool cola_status;
 	while(1)
 	{
 		ELOG("--------- TASK BUTTON------- \r\n");
+		//Productora de eventos
 		sprintf((char *)buffer,"Tiempo presionado: %lu\r\n" ,pressed_time);
 		ELOG(buffer);
-		p_ao_evento = pvPortMalloc(sizeof(led_event_t)); //Puntero que guardara la direccion de la memoria dinamica asignada
-		if (NULL != p_ao_evento ) //assert de la asignacion de memoria
-		{
+		p_ao_evento = pvPortMalloc(sizeof(led_event_t)); //puntero que guardara la direccion de la memoria dinamica asignada
+		if (NULL != p_ao_evento ) {
 			ELOG("Se alocaron %d bytes", sizeof(led_event_t));
-	        *p_ao_evento = inicial; //acceso indirecto al contenido y le asignamos estado inicial
-			procces_button(&p_ao_evento); //evento a enviar, se lo procesa en funcion del tiempo presionado del user button, se le pasa su direccion
-			cola_status = ao_led_send(&ao_led, p_ao_evento);//se encola el evento, le pasamos la direccion de memoria de p_ao_evento, la que nos dio MALLOC
-			if (pdPASS == cola_status)//ASSERT de la creacion de la cola
+	        *p_ao_evento = inicial; //reset variable
+			procces_button(&p_ao_evento); //evento a enviar, se lo procesa en funcion del tiempo presionado
+			//envio de notificacion
+			cola_status = ao_led_send(&ao_led, p_ao_evento);//se encola el evento
+			if (pdPASS == cola_status)
 			{
 				ELOG("Mensaje enviado al proceso");
 			}
@@ -77,6 +74,7 @@ void task_button(void* argument) //tarea productora, actualiza los eventos en la
 				ELOG("Memoria liberada");
 
 			}
+			//sprintf((char *)buffer,"Proccess button: %u \r\n",ao_evento);
 			ELOG(buffer);
 		}
 		else
@@ -94,8 +92,6 @@ void task_button(void* argument) //tarea productora, actualiza los eventos en la
 }
 
 
-
-//Funcion no tiene retorno, tiene como parametro un puntero del tipo led_event_t
 void procces_button(led_event_t *evento)
 {
 	if ( (t_corto <= pressed_time) && (pressed_time < t_largo))
